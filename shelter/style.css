@@ -1,3 +1,4 @@
+/*---------------------fonts----------------*/
 @font-face {
     font-family: 'Georgia';
     font-weight: normal;
@@ -33,8 +34,104 @@
     font-display: swap;
     src: url(./fonts/arial/arial-regular.ttf);
 }
-body {
+/*----------------common-styles-------------------*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding: 0;border: 0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: 400;}
+html, body {
     font-family: 'Georgia';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 15px;
+    height: 100%;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.common-background {
+    width:100%;
+    height: 908px;
+    background: url(./assets/start-screen-gradient-background.jpg);
+    background-size: cover;
+}
+.container {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+/*-------------------header------------------------*/
+.header {
+    margin-top: 30px;
+}
+.header__container {
+    display: flex;
+    justify-content: space-between;
+}
+.header__logo {
+}
+.logo {
+}
+.logo__title {
+    font-size: 32px;
+    color: #F1CDB3;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+}
+.logo__subtitle {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    color: #FFFFFF
+}
+.header__menu {
+}
+.header__list {
+    display: flex;
+    justify-content: space-between;
+    min-width: 443px;
+    height: 100%;
+    align-items: center;
+}
+.menu__item {
+   /* height: 40%;
+    border-bottom: 3px solid #F1CDB3;*/
+}
+.menu__item:hover .menu__link {
+    color: #FAFAFA;
+}
+.menu__item:active .menu__link {
+    color: #FAFAFA;
+    border-bottom: 3px solid #F1CDB3
+}
+.menu__link {
+    color: #CDCDCD;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+}
+
+/*-------------------*/
+main {
+    flex: 1 1 auto;
+}
+footer {
+    width:100%;
+    height: 100px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
