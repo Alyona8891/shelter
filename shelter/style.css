@@ -170,10 +170,8 @@ html, body {
     max-width: 465px;
     margin-bottom: 42px;
 }
-.not-only__button {
+.button {
     display: inline-block;
-    width: 207px;
-    height: 52px;
     background: #F1CDB3;
     border-radius: 100px;
     text-align: center;
@@ -182,6 +180,11 @@ html, body {
     letter-spacing: 0.06em;
     color: #292929;
     padding-top: 14px;
+}
+.not-only__button {
+    display: inline-block;
+    width: 207px;
+    height: 52px;
 }
 .not-only__image-block {
     position: relative;
@@ -204,7 +207,6 @@ main {
     background: #FFFFFF;
 }
 .about__container {
-    display: flex;
     height: 588px;
     justify-content: center;
 }
@@ -248,7 +250,89 @@ main {
     color: #4C4C4C;
 }
 /*-----------pets-----------------*/
-
+.pets {
+    background: #F6F6F6;
+    height: 877px;
+}
+.pets__container {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    text-align: center;
+}
+.pets__title {
+    margin-bottom: 60px;
+    max-width: 405px;
+}
+.pet__choise-block {
+}
+.choise-block {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.choise-block__arrow-block {
+    width: 54px;
+    height: 52px;
+    left: 0px;
+    top: 192px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.choise-block__arrow-prev {
+}
+.choise-block__slider-block {
+}
+.slider {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0 10px;
+    margin-bottom: 59px;
+}
+.slider__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FAFAFA;
+    min-width: 270px;
+    min-height: 435px;
+    justify-content: space-between;
+    padding-bottom: 31px;
+}
+.slider__image-block {
+}
+.slider__title {
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #545454;
+}
+.slider__btn {
+    width: 187px;
+    height: 52px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    background: inherit;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    color: #292929;
+}
+.choise-block__arrow-next {
+    transform: rotate(180deg);
+}
+.pets__button {
+    width: 261px;
+    height: 52px;
+}
 /*------------footer----------------*/
 footer {
     width:100%;
