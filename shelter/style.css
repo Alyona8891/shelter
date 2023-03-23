@@ -282,6 +282,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: translate(0, -56%)
 }
 .choise-block__arrow-prev {
 }
@@ -332,6 +333,52 @@ main {
 .pets__button {
     width: 261px;
     height: 52px;
+}
+/*------------help--------------------*/
+.help {
+    height: 611px;
+    padding-top: 81px;
+}
+.help__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.help__title {
+    max-width: 311px;
+    margin-bottom: 56px;
+}
+.help__content {
+}
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1030px;
+    margin: 0 auto;
+}
+.content__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 113px;
+    margin-bottom: 56px;
+}
+.content__item:not(:nth-child(5)):not(:nth-child(9)) {
+    margin-right: 120px;
+    
+}
+.content__image-block {
+}
+.content__title {
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #545454;
 }
 /*------------footer----------------*/
 footer {
