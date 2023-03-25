@@ -293,7 +293,7 @@ html, body {
 }
 /*------------footer----------------*/
 .footer {
-    background: url(./assets/footer-background.png);
+    background: url(./assets/footer-gradient-background.png);
     background-size: cover;
     height: 350px;
 }
