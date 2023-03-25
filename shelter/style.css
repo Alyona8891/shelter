@@ -85,16 +85,20 @@ html, body {
 .header__container {
     justify-content: space-between;
 }
-.header__logo {
-    cursor: pointer;
+.logo:hover  .logo__title {
+    color: #FFFFFF;
+    transition: 0.3s;
 }
-.logo {
+.logo:hover  .logo__subtitle {
+    color: #F1CDB3;
+    transition: 0.3s;
 }
 .logo__title {
     font-size: 32px;
     color: #F1CDB3;
     letter-spacing: 0.06em;
     margin-bottom: 9px;
+    transition: 0.3s;
 }
 .logo__subtitle {
     padding-left: 4px;
@@ -104,8 +108,7 @@ html, body {
     color: #FFFFFF;
     letter-spacing: 0.1em;
     font-size: 13px;
-}
-.header__menu {
+    transition: 0.3s;
 }
 .header__list {
     display: flex;
@@ -145,8 +148,6 @@ html, body {
     padding-bottom: 5px;
 }
 /*---------------not-only----*/
-.not-only {
-}
 .not-only__container {
     justify-content: space-between;
     padding-top: 90px;
@@ -272,8 +273,6 @@ main {
     margin-bottom: 60px;
     max-width: 405px;
 }
-.pet__choise-block {
-}
 .choise-block {
     display: flex;
     width: 100%;
@@ -291,16 +290,13 @@ main {
     justify-content: center;
     align-items: center;
     transform: translate(0, -56%);
+    background-color:inherit;
     transition: 0.3s;
 }
 .choise-block__arrow-block:hover {
     border: 2px solid #FDDCC4;
     background-color: #FDDCC4;
     transition: 0.3s;
-}
-.choise-block__arrow-prev {
-}
-.choise-block__slider-block {
 }
 .slider {
     display: flex;
@@ -378,8 +374,6 @@ main {
     max-width: 311px;
     margin-bottom: 56px;
 }
-.help__content {
-}
 .content {
     display: flex;
     flex-wrap: wrap;
@@ -397,9 +391,6 @@ main {
 }
 .content__item:not(:nth-child(5)):not(:nth-child(9)) {
     margin-right: 120px;
-    
-}
-.content__image-block {
 }
 .content__title {
     font-family: 'Georgia';
@@ -459,6 +450,11 @@ main {
     align-items: center;
     margin-bottom: 20px;
     cursor: pointer;
+    transition: 0.3s;
+}
+.donation__card-block:hover {
+    background-color: #FDDCC4;
+    transition: 0.3s;
 }
 .donation__card-block img {
     width: 30px;
@@ -487,10 +483,6 @@ main {
 .footer__container {
     justify-content: space-between;
 }
-.container {
-}
-.footer__contact-block {
-}
 .contact-block {
     margin-top: 56px;
 }
@@ -503,13 +495,19 @@ main {
     align-items: center;
     margin-bottom: 40px;
     margin-top: 39px;
-    
 }
 .contact-block__info-block > img {
     transition: 0.3s;
 }
+.contact-block__info-block > p {
+    transition: 0.3s;
+}
 .contact-block__info-block:hover img {
     transform: scale(1.2);
+    transition: 0.3s;
+}
+.contact-block__info-block:hover p {
+    transform: scale(1.1);
     transition: 0.3s;
 }
 .contact-block__info-text {
@@ -529,8 +527,15 @@ main {
 .contact-block__address-block > img {
     transition: 0.3s;
 }
+.contact-block__address-block > p {
+    transition: 0.3s;
+}
 .contact-block__address-block:hover img {
     transform: scale(1.2);
+    transition: 0.3s;
+}
+.contact-block__address-block:hover p {
+    transform: scale(1.1);
     transition: 0.3s;
 }
 .contact-block__address-text {
