@@ -157,7 +157,7 @@ html, body {
 }
 .menu__item_active {
     border-bottom: 3px solid #F1CDB3;
-    color: #545454;
+    color: #292929;
     padding-bottom: 5px;
 }
 /*-----------pets-----------------*/
