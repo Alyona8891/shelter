@@ -476,7 +476,7 @@ main {
 }
 /*------------footer----------------*/
 .footer {
-    background: url(./assets/footer-gradient-background.png);
+    background: red;
     background-size: cover;
     height: 350px;
 }
