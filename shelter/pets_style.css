@@ -344,7 +344,7 @@ html, body {
 .contact-block__address-block > img {
     transition: 0.3s;
 }
-.contact-block__info-block > p {
+.contact-block__address-block > p {
     transition: 0.3s;
 }
 .contact-block__address-block:hover img {
