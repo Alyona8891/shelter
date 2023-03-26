@@ -85,6 +85,9 @@ html, body {
 .header__container {
     justify-content: space-between;
 }
+.logo {
+    cursor: pointer;
+}
 .logo:hover  .logo__title {
     color: #FFFFFF;
     transition: 0.3s;
