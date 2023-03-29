@@ -87,6 +87,11 @@ html, body {
 }
 .logo {
     cursor: pointer;
+    transition: 0.3s;
+}
+.logo:active {
+    opacity: 0.7;
+    transition: 0.3s;
 }
 .logo:hover  .logo__title {
     color: #FFFFFF;
@@ -149,6 +154,7 @@ html, body {
     border-bottom: 3px solid #F1CDB3;
     color: #FAFAFA;
     padding-bottom: 5px;
+    cursor: default;
 }
 /*---------------not-only----*/
 .not-only__container {
@@ -459,6 +465,9 @@ main {
     background-color: #FDDCC4;
     transition: 0.3s;
 }
+.donation__card-block:active {
+    opacity: 0.7;
+}
 .donation__card-block img {
     width: 30px;
     height: 23px;
@@ -498,11 +507,16 @@ main {
     align-items: center;
     margin-bottom: 40px;
     margin-top: 39px;
+    transition: 0.3s;
 }
 .contact-block__info-block > img {
     transition: 0.3s;
 }
 .contact-block__info-block > p {
+    transition: 0.3s;
+}
+.contact-block__info-block:active {
+    opacity: 0.7;
     transition: 0.3s;
 }
 .contact-block__info-block:hover img {
@@ -531,6 +545,10 @@ main {
     transition: 0.3s;
 }
 .contact-block__address-block > p {
+    transition: 0.3s;
+}
+.contact-block__address-block:active {
+    opacity: 0.7;
     transition: 0.3s;
 }
 .contact-block__address-block:hover img {

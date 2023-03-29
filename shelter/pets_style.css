@@ -106,6 +106,16 @@ html, body {
     animation: 0.5s infinite scaletext;
     transition: 0.3s;
 }
+.logo:active .logo__title {
+    animation: none;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+.logo:active .logo__subtitle {
+    animation: none;
+    transition: 0.3s;
+    opacity: 0.7;
+}
 .logo__title {
     font-size: 32px;
     color: #545454;
@@ -159,6 +169,7 @@ html, body {
     border-bottom: 3px solid #F1CDB3;
     color: #292929;
     padding-bottom: 5px;
+    cursor: default;
 }
 /*-----------pets-----------------*/
 .pets {
@@ -286,9 +297,19 @@ html, body {
     background-color: #FDDCC4;
     transition: 0.3s;
 }
+.arrows-block__btn-next:active {
+    border: 2px solid #F1CDB3;
+    background-color: #F1CDB3;
+    transition: 0.3s;
+}
 .arrows-block__btn-end:hover {
     border: 2px solid #FDDCC4;
     background-color: #FDDCC4;
+    transition: 0.3s;
+}
+.arrows-block__btn-end:active {
+    border: 2px solid #F1CDB3;
+    background-color: #F1CDB3;
     transition: 0.3s;
 }
 /*------------footer----------------*/
@@ -312,6 +333,11 @@ html, body {
     align-items: center;
     margin-bottom: 40px;
     margin-top: 39px;
+    transition: 0.3s;
+}
+.contact-block__info-block:active {
+    opacity: 0.7;
+    transition: 0.3s;
 }
 .contact-block__info-block > img {
     transition: 0.3s;
@@ -340,6 +366,11 @@ html, body {
     align-items: center;
     margin-bottom: 29px;
     margin-top: 33px;
+    transition: 0.3s;
+}
+.contact-block__address-block:active {
+    opacity: 0.7;
+    transition: 0.3s;
 }
 .contact-block__address-block > img {
     transition: 0.3s;
