@@ -408,7 +408,7 @@ main {
 @media screen and (max-width: 1279px) {
     .slider {
         max-width: 604px;
-         overflow: hidden;
+        overflow: hidden;
     }
 }
 .slider__list {

@@ -67,10 +67,16 @@ html, body {
     min-height: 100%;
 }
 .container {
-    max-width: 1210px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 5px;
+    padding: 0 40px;
     display: flex;
+}
+@media screen and (max-width: 1279px) {
+    .container {
+        padding: 0 30px;
+        display: flex;
+    }
 }
 .title {
     font-size: 35px;
@@ -174,7 +180,7 @@ html, body {
 /*-----------pets-----------------*/
 .pets {
     background: #F6F6F6;
-    height: 1342px;
+    
 }
 .pets__container {
     flex-direction: column;
@@ -182,10 +188,16 @@ html, body {
     padding-top: 80px;
     text-align: center;
     flex-wrap: wrap;
+    padding: 82px 0px 0;
 }
 .pets__title {
-    margin-bottom: 59px;
+    margin-bottom: 28px;
     max-width: 405px;
+}
+@media screen and (max-width: 1279px) {
+    .pets__title {
+        margin-bottom: 0px;
+    }
 }
 .choise-block {
     display: flex;
@@ -193,15 +205,35 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
+@media screen and (max-width: 1279px) {
+    .choise-block {
+        margin-bottom: 18px;
+    }
+}
 .slider {
+    max-height: 990px;
+    max-width: 1240px;
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto;
+}
+@media screen and (max-width: 1279px) {
+    .slider {
+        max-width: 80.7291667vw;
+        max-height: 1415px;
+    }
+}
+.slider__list {
+    width: 9999999px;
     display: flex;
     width: 100%;
-    justify-content: space-between;
-    padding: 0 10px;
-    margin-bottom: 30px;
+    justify-content: space-around;
+    /*padding: 0 10px;*/
+    margin-bottom: 61px;
     flex-wrap: wrap;
 }
 .slider__item {
+    flex: 0 0 270px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,15 +242,26 @@ html, body {
     justify-content: space-between;
     padding-bottom: 31px;
     border-radius: 9px 9px;
-    margin: 0 -10px 30px;
+    margin-top: 30px;
     cursor: pointer;
+}
+@media screen and (max-width: 1279px) {
+    .slider__item {
+        flex: 0 0 270px;
+        min-height: 434px;
+    }
 }
 .slider__image-block {
     position: relative;
-    width: 270px;
+    min-width: 100%;
     height: 270px;
     border-radius: 9px;
-}
+}/*
+@media screen and (max-width: 1279px) {
+    .slider__image-block {
+        width: 100%;
+    }
+}*/
 .slider__image-block img{
     position: absolute;
     width: 100%;
@@ -228,6 +271,7 @@ html, body {
     object-fit: cover;
     border-radius: 9px 9px 0 0;
 }
+
 .slider__title {
     font-size: 20px;
     line-height: 23px;
@@ -272,6 +316,12 @@ html, body {
     font-size: 20px;
     color: #292929;
     transition: 0.3s;
+    margin-bottom: 99px;
+}
+@media screen and (max-width: 1279px) {
+    .btn-nav {
+        margin-bottom: 75px;
+    }
 }
 .btn-nav:not(:last-child) {
     margin-right: 18px;
@@ -316,13 +366,25 @@ html, body {
 .footer {
     background: url(./assets/footer-gradient-background.png);
     background-size: cover;
-    height: 350px;
 }
 .footer__container {
     justify-content: space-between;
 }
+@media screen and (max-width: 1020px) {
+    .footer__container {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
 .contact-block {
     margin-top: 56px;
+    margin-right: 20px;
+}
+@media screen and (max-width: 800px) {
+    .contact-block {
+        margin-top: 31px;
+        margin-left: 20px;
+    }
 }
 .contact-block__title {
     color: #FFFFFF;
@@ -334,15 +396,16 @@ html, body {
     margin-bottom: 40px;
     margin-top: 39px;
     transition: 0.3s;
-}
-.contact-block__info-block:active {
-    opacity: 0.7;
-    transition: 0.3s;
+
 }
 .contact-block__info-block > img {
     transition: 0.3s;
 }
 .contact-block__info-block > p {
+    transition: 0.3s;
+}
+.contact-block__info-block:active {
+    opacity: 0.7;
     transition: 0.3s;
 }
 .contact-block__info-block:hover img {
@@ -366,16 +429,15 @@ html, body {
     align-items: center;
     margin-bottom: 29px;
     margin-top: 33px;
-    transition: 0.3s;
-}
-.contact-block__address-block:active {
-    opacity: 0.7;
-    transition: 0.3s;
 }
 .contact-block__address-block > img {
     transition: 0.3s;
 }
 .contact-block__address-block > p {
+    transition: 0.3s;
+}
+.contact-block__address-block:active {
+    opacity: 0.7;
     transition: 0.3s;
 }
 .contact-block__address-block:hover img {
@@ -399,6 +461,11 @@ html, body {
     width: 300px;
     position: relative;
     margin-top: 40px;
+}
+@media screen and (max-width: 800px) {
+    .footer__image-block {
+            margin-top: 24px;
+    }
 }
 .footer__image-block img{
     position: absolute;
