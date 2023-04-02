@@ -108,13 +108,15 @@ html, body {
     opacity: 0.7;
     transition: 0.3s;
 }
-.logo:hover  .logo__title {
-    color: #FFFFFF;
-    transition: 0.3s;
-}
-.logo:hover  .logo__subtitle {
-    color: #F1CDB3;
-    transition: 0.3s;
+@media (hover: hover) {
+    .logo:hover  .logo__title {
+        color: #FFFFFF;
+        transition: 0.3s;
+    }
+    .logo:hover  .logo__subtitle {
+        color: #F1CDB3;
+        transition: 0.3s;
+    }
 }
 .logo__title {
     font-size: 32px;
@@ -151,9 +153,11 @@ html, body {
     cursor: pointer;
     border-bottom: 3px solid #f1cdb300;
 }
-.menu__item:hover .menu__link {
-    color: #FAFAFA;
-    transition: 0.3s;
+@media (hover: hover) {
+    .menu__item:hover .menu__link {
+        color: #FAFAFA;
+        transition: 0.3s;
+    }
 }
 .menu__item:active .menu__link {
     color: #FAFAFA;
@@ -296,9 +300,11 @@ html, body {
     padding-top: 14px;
     transition: 0.3s;
 }
-.button:hover {
-    background: #FDDCC4;
-    transition: 0.3s;
+@media (hover: hover) {
+    .button:hover {
+        background: #FDDCC4;
+        transition: 0.3s;
+    }
 }
 .not-only__button {
     display: inline-block;
@@ -532,10 +538,12 @@ main {
     background-color:inherit;
     transition: 0.3s;
 }
-.choise-block__arrow-block:hover {
-    border: 2px solid #FDDCC4;
-    background-color: #FDDCC4;
-    transition: 0.3s;
+@media (hover: hover) {
+    .choise-block__arrow-block:hover {
+        border: 2px solid #FDDCC4;
+        background-color: #FDDCC4;
+        transition: 0.3s;
+    }
 }
 @media screen and (max-width: 500px) {
     .choise-block__arrow-block {
@@ -629,14 +637,16 @@ main {
     color: #292929;
     transition: 0.3s;
 }
-.slider__item:hover .slider__btn{
-    border:  2px solid #FDDCC4;
-    background-color: #FDDCC4;
-    transition: 0.3s;
-}
-.slider__item:hover {
-    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
-    transition: 0.3s;
+@media (hover: hover) {
+    .slider__item:hover .slider__btn{
+        border:  2px solid #FDDCC4;
+        background-color: #FDDCC4;
+        transition: 0.3s;
+    }
+    .slider__item:hover {
+        box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+        transition: 0.3s;
+    }
 }
 .choise-block__arrow-next {
     transform: rotate(180deg);
@@ -861,9 +871,11 @@ main {
        width: 87.8125vw;
     }
 }
-.donation__card-block:hover {
-    background-color: #FDDCC4;
-    transition: 0.3s;
+@media (hover: hover) {
+    .donation__card-block:hover {
+        background-color: #FDDCC4;
+        transition: 0.3s;
+    }
 }
 .donation__card-block:active {
     opacity: 0.7;
@@ -982,13 +994,15 @@ main {
     opacity: 0.7;
     transition: 0.3s;
 }
-.contact-block__info-block:hover img {
-    transform: scale(1.2);
-    transition: 0.3s;
-}
-.contact-block__info-block:hover p {
-    transform: scale(1.1);
-    transition: 0.3s;
+@media (hover: hover) {
+    .contact-block__info-block:hover img {
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+    .contact-block__info-block:hover p {
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
 }
 @media screen and (max-width: 320px) {
     .contact-block__info-block {
@@ -1044,13 +1058,15 @@ main {
     opacity: 0.7;
     transition: 0.3s;
 }
-.contact-block__address-block:hover img {
-    transform: scale(1.2);
-    transition: 0.3s;
-}
-.contact-block__address-block:hover p {
-    transform: scale(1.1);
-    transition: 0.3s;
+@media (hover: hover) {
+    .contact-block__address-block:hover img {
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+    .contact-block__address-block:hover p {
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
 }
 @media screen and (max-width: 320px) {
     .contact-block__address-block {
