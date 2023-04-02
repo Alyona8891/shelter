@@ -68,8 +68,7 @@ html, body {
 }
 .common-background {
     width: 100%;
-    background: url(./assets/start-screen-gradient-background.jpg);
-    background-size: cover;
+    background: url(./assets/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 .container {
     max-width: 1280px;
@@ -89,7 +88,6 @@ html, body {
         padding: 0 10px;
     }
 }
-
 /*-------------------header------------------------*/
 .header {
     margin-top: 30px;
@@ -135,7 +133,6 @@ html, body {
     font-size: 13px;
     transition: 0.3s;
 }
-
 @media screen and (max-width: 767px) {
     .header__menu {
         display: none;
@@ -212,7 +209,6 @@ html, body {
         padding-top: 7.03125vw;
     }
 }
-
 @media screen and (max-width: 1000px) {
     .not-only__container {
         flex-direction: column;
@@ -632,7 +628,6 @@ main {
     letter-spacing: 0.06em;
     color: #292929;
     transition: 0.3s;
-
 }
 .slider__item:hover .slider__btn{
     border:  2px solid #FDDCC4;
@@ -864,7 +859,6 @@ main {
 @media screen and (max-width: 500px) {
     .donation__card-block {
        width: 87.8125vw;
-        
     }
 }
 .donation__card-block:hover {
@@ -910,8 +904,7 @@ main {
 }
 /*------------footer----------------*/
 .footer {
-    background: url(./assets/footer-gradient-background.png);
-    background-size: cover;
+    background: url(./assets/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
 .footer__container {
     justify-content: space-between;
@@ -977,8 +970,7 @@ main {
     align-items: center;
     margin-bottom: 40px;
     margin-top: 39px;
-    transition: 0.3s;
-
+    transition: 0.3s
 }
 .contact-block__info-block > img {
     transition: 0.3s;
