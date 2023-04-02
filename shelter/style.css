@@ -108,7 +108,7 @@ html, body {
     opacity: 0.7;
     transition: 0.3s;
 }
-@media (hover: hover) {
+@media (any-hover: hover) {
     .logo:hover  .logo__title {
         color: #FFFFFF;
         transition: 0.3s;
