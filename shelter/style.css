@@ -823,14 +823,16 @@ main {
     flex-direction: column;
     align-items: flex-start;
 }
+@media screen and (max-width: 700px) {
+    .donation__info-block .donation__info {
+        text-align: justify;
+    }
+}
 @media screen and (max-width: 500px) {
     .donation__info-block {
         margin-top: 13.125vw;
         text-align: center;
         align-items: center;
-    }
-    .donation__info-block .donation__info {
-        text-align: justify;
     }
 }
 .donation__title {
@@ -909,6 +911,11 @@ main {
 @media screen and (max-width: 800px) {
     .donation__info {
         max-width: 49.47916667vw;
+    }
+}
+@media screen and (max-width: 700px) {
+    .donation__info {
+        max-width: 349px;
     }
 }
 @media screen and (max-width: 500px) {
