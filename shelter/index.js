@@ -2,9 +2,21 @@ console.log('Score 100/100\n1.Вёрстка страницы Main соотве�
 const hamb = document.querySelector('#hamb');
 const popup = document.querySelector('#popup');
 const menu = document.querySelector('#menu').cloneNode(1);
+const body = document.body;
 hamb.addEventListener('click', pressHamb);
 function pressHamb(e) {
     popup.classList.toggle('open');
     popup.appendChild(menu);
     hamb.classList.toggle('active');
+    body.classList.toggle('noscroll');
+    e.stopPropagation();
 }
+menu.addEventListener('click', pressHamb);
+document.addEventListener('click', closeHamb);
+function closeHamb() {
+    if(popup.classList.contains('open')) {
+        popup.classList.remove('open');
+        hamb.classList.remove('active');
+        body.classList.remove('noscroll');
+    }
+ }
