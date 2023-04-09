@@ -254,7 +254,7 @@ body.noscroll {
     }
     .header__popup.open {
         right: 0;
-        box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+        box-shadow: 0 0 0 999999px rgba(41, 41, 41, 0.6);
     }
     .header__popup .header__list {
         padding-top: 252px;
