@@ -98,6 +98,26 @@ body.noscroll {
         font-size: 7.8125vw;
     }
 }
+@keyframes move-top {
+    from {top: 0px;}
+    to {top: -960px;}
+  }
+  
+  .transition-top {
+    top: -960px
+  }
+  
+  @keyframes move-left {
+    from {left: -1086px;}
+    to {left: 0px;}
+  }
+  
+  .transition-left {
+    animation-name: move-left;
+    animation-duration: 5s;
+  }
+
+
 /*-------------------header------------------------*/
 .header {
     padding-top: 30px;
@@ -381,6 +401,7 @@ body.noscroll {
     }
 }
 .slider__list {
+    position: relative;
     width: 9999999px;
     display: flex;
     width: 100%;
@@ -513,16 +534,12 @@ body.noscroll {
 .arrows-block {
     display: flex;
 }
-.arrows-block__btn-start {
+.arrows-block__btn-start:disabled, .arrows-block__btn-prev:disabled, .arrows-block__btn-next:disabled, .arrows-block__btn-end:disabled   {
     color: #CDCDCD;
     border: 2px solid #CDCDCD;
     cursor: default;
 }
-.arrows-block__btn-prev {
-    color: #CDCDCD;
-    border: 2px solid #CDCDCD;
-    cursor: default;
-}
+
 .arrows-block__btn-number {
     background-color: #F1CDB3;
 }
@@ -539,10 +556,16 @@ body.noscroll {
     transition: 0.3s;
 }
 @media (min-width: 1200px) {
-    .arrows-block__btn-end:hover {
+    .btn-nav:hover {
         border: 2px solid #FDDCC4;
         background-color: #FDDCC4;
         transition: 0.3s;
+    }
+    .btn-nav[disabled]:hover {
+        color: #CDCDCD;
+    border: 2px solid #CDCDCD;
+    background-color: inherit;
+    cursor: default;
     }
 }
 .arrows-block__btn-end:active {

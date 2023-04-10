@@ -10,42 +10,20 @@ const carousel = document.querySelector("#carousel");
 const itemLeft = document.querySelector("#item-left");
 const itemRight = document.querySelector("#item-right");
 
-window.addEventListener('load', (e) => {
-    const carouselItemActive = createCarouselItem();
-    console.log(carouselItemActive);
-    carouselItemActive.id = 'carousel-item-active';
-    carousel.appendChild(carouselItemActive);
-    const  carouselItemLeft = createCarouselItem();
-    carouselItemLeft.id = 'item-left';
-    carouselItemActive.before(carouselItemLeft);
-    carouselItemLeft.id = 'item-left';
-    carouselItemActive.before(carouselItemLeft);
-    const  carouselItemRight = createCarouselItem();
-    carouselItemRight.id = 'item-right';
-    carouselItemActive.after(carouselItemRight);
-
-})
-function getArrRandomNumber() {
+function getArrRandomNumber(arr) {
     let newArrNumber = [];
     let randomNumber;
     while(newArrNumber.length <= 2) {
         randomNumber = Math.floor(Math.random() * 8);
-        if (newArrNumber.indexOf(randomNumber) === -1) {
+        if (newArrNumber.indexOf(randomNumber) === -1 && !arr) {
             newArrNumber.push(randomNumber);
+        } else if (arr) {
+            if(newArrNumber.indexOf(randomNumber) === -1 && arr.indexOf(randomNumber) === -1) {
+                newArrNumber.push(randomNumber);
+            }
         }
     }
     return newArrNumber;
-}
-
-
-function createCarouselItem() {
-    const carouselItem = document.createElement('ul');
-    carouselItem.classList.add('slider__list');
-    const arrRandomNumber = getArrRandomNumber();
-    carouselItem.appendChild(createSliderItem(arrPetsNames[arrRandomNumber[0]]));
-    carouselItem.appendChild(createSliderItem(arrPetsNames[arrRandomNumber[1]]));
-    carouselItem.appendChild(createSliderItem(arrPetsNames[arrRandomNumber[2]]));
-    return carouselItem;
 }
 function createSliderItem(name) {
     const sliderItem = document.createElement('li');
@@ -67,6 +45,46 @@ function createSliderItem(name) {
     sliderImageBlock.appendChild(sliderImage);
     return sliderItem;
 }
+function createCarouselItem(arr) {
+    const carouselItem = document.createElement('ul');
+    carouselItem.classList.add('slider__list');
+    carouselItem.appendChild(createSliderItem(arrPetsNames[arr[0]]));
+    carouselItem.appendChild(createSliderItem(arrPetsNames[arr[1]]));
+    carouselItem.appendChild(createSliderItem(arrPetsNames[arr[2]]));
+    return carouselItem;
+}
+let arrActive = [];
+let arrLeft = [];
+let arrRight = [];
+window.addEventListener('load', (e) => {
+    const arrRandomActive = getArrRandomNumber();
+    arrRandomActive.forEach(element => {
+        arrActive.push(element);
+    });
+    const carouselItemActive = document.createElement('ul');
+    carouselItemActive.classList.add('slider__list');
+    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[0]]));
+    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[1]]));
+    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[2]]));
+    carouselItemActive.id = 'carousel-item-active';
+    carousel.appendChild(carouselItemActive);
+    const arrRandomLeft = getArrRandomNumber(arrRandomActive);
+    arrRandomLeft.forEach(element => {
+        arrLeft.push(element);
+    });
+    const  carouselItemLeft = createCarouselItem(arrRandomLeft);
+    carouselItemLeft.id = 'item-left';
+    carouselItemActive.before(carouselItemLeft);
+    const arrRandomRight = getArrRandomNumber(arrRandomActive);
+    arrRandomRight.forEach(element => {
+        arrRight.push(element);
+    });
+    const  carouselItemRight = createCarouselItem(arrRandomRight);
+    carouselItemRight.id = 'item-right';
+    carouselItemActive.after(carouselItemRight);
+})
+console.log(arrActive);
+console.log(arrLeft);
 hamb.addEventListener('click', pressHamb);
 function pressHamb(e) {
     popup.classList.toggle('open');
@@ -88,8 +106,7 @@ const moveLeft = () => {
     carousel.classList.add("transition-left");
     btnLeft.removeEventListener("click", moveLeft);
     btnRight.removeEventListener("click", moveRight);
-  };
-
+};
 const moveRight = () => {
     carousel.classList.add("transition-right");
     btnLeft.removeEventListener("click", moveLeft);
@@ -98,27 +115,34 @@ const moveRight = () => {
 btnLeft.addEventListener("click", moveLeft);
 btnRight.addEventListener("click", moveRight);
 carousel.addEventListener("animationend", (animationEvent) => {
-    let changedItem;
     if (animationEvent.animationName === "move-left") {
         carousel.classList.remove("transition-left");
         document.querySelector("#carousel-item-active").innerHTML = document.querySelector("#item-left").innerHTML;
         document.querySelector("#item-left").innerHTML='';
-        let  changedItemLeft = createCarouselItem();
+        arrRight = arrActive;
+        arrActive = arrLeft;
+        console.log(arrActive);
+        const arrRandom = getArrRandomNumber(arrActive);
+        arrLeft = arrRandom;
+        console.log(arrLeft);
+        let  changedItemLeft = createCarouselItem(arrLeft);
         changedItemLeft.id = 'item-left';
         document.querySelector("#item-left").innerHTML = changedItemLeft.innerHTML;
     } else {
         carousel.classList.remove("transition-right");
         document.querySelector("#carousel-item-active").innerHTML = document.querySelector("#item-right").innerHTML;
         document.querySelector("#item-right").innerHTML='';
-        let  changedItemRight = createCarouselItem();
+        arrLeft = arrActive;
+        arrActive = arrRight;
+        console.log(arrActive);
+        const arrRandomCh = getArrRandomNumber(arrActive);
+        arrRight = arrRandomCh;
+        console.log(arrRight);
+        let  changedItemRight = createCarouselItem(arrRight);
         changedItemRight.id = 'item-right';
         document.querySelector("#item-right").innerHTML = changedItemRight.innerHTML;
     }
-    /*changedItem.innerHTML = "";
-    for (let i = 0; i < 3; i++) {
-      const card = createCarouselItem();
-      changedItem.appendChild(card);
-    }*/
+    
     btnLeft.addEventListener("click", moveLeft);
     btnRight.addEventListener("click", moveRight);
 })
