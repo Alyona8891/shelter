@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <nav class="header__menu">
-                        <ul class="header__list">
+                        <ul class="header__list" id="menu">
                             <li class="menu__item_active">
                                 <span class="menu__link">About the shelter</span>
                             </li>
@@ -40,6 +40,7 @@
                             </li>
                         </ul>
                     </nav>
+                    <div class="header__popup" id="popup"></div>
                 </div>
             </header>
             <section class="not-only">
@@ -74,41 +75,15 @@
                         are looking for a house
                     </h2>
                     <div class="pet__choise-block choise-block">
-                        <button class="choise-block__arrow-block">
+                        <button class="choise-block__arrow-block" id="btn-left">
                             <img src="./assets/arrow.svg" alt="arrow" class="choise-block__arrow-prev">
                         </button>
-                        <div class="choise-block__slider-block slider">
-                            <ul class="slider__list">
-                                <li class="slider__item">                    
-                                    <div class="slider__image-block">
-                                        <img src="./assets/pets/katrine.png" alt="pet-photo">
-                                    </div>
-                                    <h3 class="slider__title">Katrine</h3>
-                                    <button class="slider__btn">
-                                        Learn more
-                                    </button>
-                                </li>
-                                <li class="slider__item">                    
-                                    <div class="slider__image-block">
-                                        <img src="./assets/pets/jennifer.png" alt="pet-photo">
-                                    </div>
-                                    <h3 class="slider__title">Jennifer</h3>
-                                    <button class="slider__btn">
-                                        Learn more
-                                    </button>
-                                </li>
-                                <li class="slider__item">                    
-                                    <div class="slider__image-block">
-                                        <img src="./assets/pets/woody.png" alt="pet-photo">
-                                    </div>
-                                    <h3 class="slider__title">Woody</h3>
-                                    <button class="slider__btn">
-                                        Learn more
-                                    </button>
-                                </li>
-                            </ul>
+                        <div class="choise-block__slider-block slider" id="carousel-wrapper">
+                            <div id="carousel">
+                                
+                            </div>
                         </div>
-                        <button class="choise-block__arrow-block">
+                        <button class="choise-block__arrow-block" id="btn-right">
                             <img src="./assets/arrow.svg" alt="arrow" class="choise-block__arrow-next">
                         </button>
                     </div>
@@ -220,6 +195,36 @@
                 <div class="footer__image-block">
                     <img src="./assets/footer-puppy.png" alt="footer-puppy-image">
                 </div>
+            </div>
+            <div class="popup-wrapper">
+                <div class="popup__window">
+                    <button class="popup__btn-close">+</button>
+                    <img src="./assets/modal/jennifer.png" alt="" class="popup__image">
+                    <div class="popup__text-block">
+                        <h4 class="popup__title title">Jennifer</h4>
+                        <p class="popup__subtitle">Dog - Labrador</p>
+                        <p class="popup__text">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+                        <ul class="popup__list">
+                            <li class="popup__item">
+                                <p class="item__title">Age:&nbsp;</p>
+                                <p class="item__text"> 2 months</p>
+                            </li>
+                            <li class="popup__item">
+                                <p class="item__title">Inoculations:&nbsp</p>
+                                <p class="item__text"> none</p>
+                            </li>
+                            <li class="popup__item">
+                                <p class="item__title">Diseases:&nbsp</p>
+                                <p class="item__text"> none</p>
+                            </li>
+                            <li class="popup__item">
+                                <p class="item__title">Parasites:&nbsp</p>
+                                <p class="item__text"> none</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </footer>
     </div>

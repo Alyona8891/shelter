@@ -1,9 +1,3 @@
-alert('Родненький(ая)! Дай сутки доделать этот гребаный слайдер!');
-const hamb = document.querySelector('#hamb');
-const popup = document.querySelector('#popup');
-const menu = document.querySelector('#menu').cloneNode(1);
-const body = document.body;
-const arrPetsNames = ['Sophia', 'Freddie', 'Scarlett', 'Charly', 'Timmy', 'Woody', 'Jennifer', 'Katrine'];
 let pets = [
     {
       "name": "Jennifer",
@@ -94,27 +88,57 @@ let pets = [
       "parasites": ["lice", "fleas"]
     }
 ]
-const btnLeft = document.querySelector('#btn-left');
-const btnRight = document.querySelector("#btn-right");
-const carousel = document.querySelector("#carousel");
-const itemLeft = document.querySelector("#item-left");
-const itemRight = document.querySelector("#item-right");
-
-function getArrRandomNumber(arr) {
-    let newArrNumber = [];
-    let randomNumber;
-    while(newArrNumber.length <= 2) {
-        randomNumber = Math.floor(Math.random() * 8);
-        if (newArrNumber.indexOf(randomNumber) === -1 && !arr) {
-            newArrNumber.push(randomNumber);
-        } else if (arr) {
-            if(newArrNumber.indexOf(randomNumber) === -1 && arr.indexOf(randomNumber) === -1) {
-                newArrNumber.push(randomNumber);
-            }
-        }
-    }
-    return newArrNumber;
+const hamb = document.querySelector('#hamb');
+const popup = document.querySelector('#popup');
+const menu = document.querySelector('#menu').cloneNode(1);
+const body = document.body;
+hamb.addEventListener('click', pressHamb);
+function pressHamb(e) {
+    popup.classList.toggle('open');
+    popup.appendChild(menu);
+    hamb.classList.toggle('active');
+    body.classList.toggle('noscroll');
+    e.stopPropagation();
 }
+menu.addEventListener('click', pressHamb);
+document.addEventListener('click', closeHamb);
+function closeHamb() {
+    if(popup.classList.contains('open')) {
+        popup.classList.remove('open');
+        hamb.classList.remove('active');
+        body.classList.remove('noscroll');
+    }
+}
+function generateNumber(maxNum) {
+    let result = Math.floor(Math.random() * maxNum);
+    return result;
+}
+function fullArr(len) {
+    const result = [];
+    while(result.length <= (len - 1)) {
+        let randomNumber = generateNumber(len);
+        if (result.indexOf(randomNumber) === -1) {
+            result.push(randomNumber);
+        }
+    } 
+    return result;
+}
+const firstArr= fullArr(8);
+console.log(firstArr);
+function mixFirstArr (arr) {
+    
+    let dublicatedArr = [...arr];
+    let partDublicatedArr = dublicatedArr.splice(0, 3);
+    partDublicatedArr = partDublicatedArr.sort(() => Math.random() - 0.5);
+    let partDublicatedArr2 = dublicatedArr.splice(0, 3);
+    partDublicatedArr2 = partDublicatedArr2.sort(() => Math.random() - 0.5);
+    dublicatedArr = dublicatedArr.sort(() => Math.random() - 0.5);
+    let result = [].concat(partDublicatedArr).concat( partDublicatedArr2).concat(dublicatedArr);
+    return result;
+
+}
+const commonArr = [].concat(firstArr).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr));
+console.log(commonArr);
 function createSliderItem(name) {
     const sliderItem = document.createElement('li');
     sliderItem.classList.add('slider__item');
@@ -135,63 +159,20 @@ function createSliderItem(name) {
     sliderImageBlock.appendChild(sliderImage);
     return sliderItem;
 }
-function createCarouselItem(arr) {
+function createSlider() {
     const carouselItem = document.createElement('ul');
     carouselItem.classList.add('slider__list');
-    carouselItem.appendChild(createSliderItem(arrPetsNames[arr[0]]));
-    carouselItem.appendChild(createSliderItem(arrPetsNames[arr[1]]));
-    carouselItem.appendChild(createSliderItem(arrPetsNames[arr[2]]));
+    carouselItem.id = 'slider-list';
+    commonArr.forEach((el, index) => {
+        carouselItem.appendChild(createSliderItem(pets[el].name))
+    })
     return carouselItem;
 }
-let arrActive = [];
-let arrLeft = [];
-let arrRight = [];
+const slider = document.querySelector('#slider');
 
-    const arrRandomActive = getArrRandomNumber();
-    arrRandomActive.forEach(element => {
-        arrActive.push(element);
-    });
-    const carouselItemActive = document.createElement('ul');
-    carouselItemActive.classList.add('slider__list');
-    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[0]]));
-    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[1]]));
-    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[2]]));
-    carouselItemActive.id = 'carousel-item-active';
-    carousel.appendChild(carouselItemActive);
-    const arrRandomLeft = getArrRandomNumber(arrRandomActive);
-    arrRandomLeft.forEach(element => {
-        arrLeft.push(element);
-    });
-    const  carouselItemLeft = createCarouselItem(arrRandomLeft);
-    carouselItemLeft.id = 'item-left';
-    carouselItemActive.before(carouselItemLeft);
-    const arrRandomRight = getArrRandomNumber(arrRandomActive);
-    arrRandomRight.forEach(element => {
-        arrRight.push(element);
-    });
-    const  carouselItemRight = createCarouselItem(arrRandomRight);
-    carouselItemRight.id = 'item-right';
-    carouselItemActive.after(carouselItemRight);
 
-console.log(arrActive);
-console.log(arrLeft);
-hamb.addEventListener('click', pressHamb);
-function pressHamb(e) {
-    popup.classList.toggle('open');
-    popup.appendChild(menu);
-    hamb.classList.toggle('active');
-    body.classList.toggle('noscroll');
-    e.stopPropagation();
-}
-menu.addEventListener('click', pressHamb);
-document.addEventListener('click', closeHamb);
-function closeHamb() {
-    if(popup.classList.contains('open')) {
-        popup.classList.remove('open');
-        hamb.classList.remove('active');
-        body.classList.remove('noscroll');
-    }
-}
+slider.appendChild(createSlider());
+
 const moveLeft = () => {
     carousel.classList.add("transition-left");
     btnLeft.removeEventListener("click", moveLeft);
@@ -200,47 +181,152 @@ const moveLeft = () => {
 const moveRight = () => {
     carousel.classList.add("transition-right");
     btnLeft.removeEventListener("click", moveLeft);
-    btnRight.removeEventListener("click", moveRight);
+    /*btnRight.removeEventListener("click", moveRight);*/
   };
-btnLeft.addEventListener("click", moveLeft);
-btnRight.addEventListener("click", moveRight);
-carousel.addEventListener("animationend", (animationEvent) => {
-    if (animationEvent.animationName === "move-left") {
-        carousel.classList.remove("transition-left");
-        document.querySelector("#carousel-item-active").innerHTML = document.querySelector("#item-left").innerHTML;
-        document.querySelector("#item-left").innerHTML='';
-        arrRight = arrActive;
-        arrActive = arrLeft;
-        console.log(arrActive);
-        const arrRandom = getArrRandomNumber(arrActive);
-        arrLeft = arrRandom;
-        console.log(arrLeft);
-        let  changedItemLeft = createCarouselItem(arrLeft);
-        changedItemLeft.id = 'item-left';
-        document.querySelector("#item-left").innerHTML = changedItemLeft.innerHTML;
-    } else {
-        carousel.classList.remove("transition-right");
-        document.querySelector("#carousel-item-active").innerHTML = document.querySelector("#item-right").innerHTML;
-        document.querySelector("#item-right").innerHTML='';
-        arrLeft = arrActive;
-        arrActive = arrRight;
-        console.log(arrActive);
-        const arrRandomCh = getArrRandomNumber(arrActive);
-        arrRight = arrRandomCh;
-        console.log(arrRight);
-        let  changedItemRight = createCarouselItem(arrRight);
-        changedItemRight.id = 'item-right';
-        document.querySelector("#item-right").innerHTML = changedItemRight.innerHTML;
+const btnStart =  document.querySelector('#btn-start');
+const btnNum =  document.querySelector('#btn-num');
+const btnPrev =  document.querySelector('#btn-prev');
+const btnNext =  document.querySelector('#btn-next');
+const btnEnd =  document.querySelector('#btn-end');
+
+/*const moveTop = () => {
+    const sl = document.querySelector("#slider-list");
+    sl.classList.add("transition-top");
+    btnNext.removeEventListener("click", moveTop);
+    /*btnRight.removeEventListener("click", moveRight);
+};
+btnNext.addEventListener("click", moveTop);*/
+/**--------------pagination */
+let windWidth = window.innerWidth;
+let currentStep = 0;
+const updateBtn = () => {
+    if (windWidth >= 1280) {
+        if (currentStep === 5) {
+            btnEnd.disabled = true;
+            btnNext.disabled = true;
+          } else if (currentStep === 0) {
+            btnStart.disabled = true;
+            btnPrev.disabled = true;
+          } else {
+              btnEnd.disabled = false;
+              btnNext.disabled = false;
+              btnStart.disabled = false;
+              btnPrev.disabled = false;
+          }
+    } else if (windWidth < 1280 && windWidth > 767) {
+            if (currentStep === 7) {
+                btnEnd.disabled = true;
+                btnNext.disabled = true;
+              } else if (currentStep === 0) {
+                btnStart.disabled = true;
+                btnPrev.disabled = true;
+              } else {
+                  btnEnd.disabled = false;
+                  btnNext.disabled = false;
+                  btnStart.disabled = false;
+                  btnPrev.disabled = false;
+              }
+    } else if (windWidth < 768) {
+        if (currentStep === 15) {
+            btnEnd.disabled = true;
+            btnNext.disabled = true;
+          } else if (currentStep === 0) {
+            btnStart.disabled = true;
+            btnPrev.disabled = true;
+          } else {
+              btnEnd.disabled = false;
+              btnNext.disabled = false;
+              btnStart.disabled = false;
+              btnPrev.disabled = false;
+          }
     }
     
-    btnLeft.addEventListener("click", moveLeft);
-    btnRight.addEventListener("click", moveRight);
-})
-/*----------popup-cards------*/
+};
+btnNext.addEventListener("click", pressBtnNext);
+function pressBtnNext(e) {
+    if (windWidth >= 1280) {
+    currentStep += 1;
+    btnNum.innerText = currentStep + 1 ;
+    console.log(currentStep);
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${currentStep*930}px`;
+    updateBtn();
+    } else if (windWidth < 1280) {
+        currentStep += 1;
+    btnNum.innerText = currentStep + 1 ;
+    console.log(currentStep);
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${currentStep*1392}px`;
+    updateBtn();
+    }
+};
 
+btnPrev.addEventListener("click", pressBtnPrev);
+function pressBtnPrev(e) {
+    if (windWidth >= 1280) {
+    currentStep += -1;
+    console.log(currentStep);
+    btnNum.innerText = currentStep + 1;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*930}px`;
+    updateBtn();
+    } else if (windWidth < 1280) {
+        currentStep += -1;
+    console.log(currentStep);
+    btnNum.innerText = currentStep + 1;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*1392}px`;
+    updateBtn();
+    }
+};
+btnStart.addEventListener("click", pressBtnStart)
+function pressBtnStart() {
+    currentStep = 0;
+    updateBtn(); 
+    btnNum.innerText = currentStep + 1;
+    btnEnd.disabled = false;
+    btnNext.disabled = false;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `0`;
+};
+  
+btnEnd.addEventListener("click", pressBtnEnd);
+function pressBtnEnd() {
+    if (windWidth >= 1280) {
+    currentStep = 5;
+    updateBtn();
+    btnNum.innerText = currentStep + 1;
+    btnStart.disabled = false;
+    btnPrev.disabled = false;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*930}px`;
+    } else if (windWidth < 1280 && windWidth > 767) {
+        currentStep = 7;
+    updateBtn();
+    btnNum.innerText = currentStep + 1;
+    btnStart.disabled = false;
+    btnPrev.disabled = false;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*1392}px`;
+    } else if (windWidth < 768) {
+        currentStep = 15;
+    updateBtn();
+    btnNum.innerText = currentStep + 1;
+    btnStart.disabled = false;
+    btnPrev.disabled = false;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*1392}px`;
+    }
+};
+window.addEventListener('resize', function() {
+    windWidth = window.innerWidth;
+    pressBtnStart();
+
+})
+   /*----------popup-cards------*/
 const arrSliderItems = document.querySelectorAll('.slider__item');
 const popupCard = document.querySelector('.popup-wrapper');
-const popupWindow = document.querySelector('.popup__window');
+const popupWindow = document.querySelector('.popup__window', '::before');
 
 const popupImage = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__title');
@@ -252,16 +338,16 @@ const popupCloseBtn = document.querySelector('.popup__btn-close');
 
    arrSliderItems.forEach((item, index) => {
     item.addEventListener("click", (e) => {
-        /*let objectPet = pets[commonArr[index]];*/
+        let objectPet = pets[commonArr[index]];
         popupCard.classList.add('popup-wrapper__active');
-        /*popupImage.src = `./assets/modal/${objectPet.name}.png`;
+        popupImage.src = `./assets/modal/${objectPet.name}.png`;
         popupTitle.innerText = objectPet.name;
         popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
         popupText.innerText = objectPet.description;
         listItem[0].innerText =  objectPet.age;
         listItem[1].innerText =  objectPet.inoculations;
         listItem[2].innerText =  objectPet.diseases;
-        listItem[3].innerText =  objectPet.parasites;*/
+        listItem[3].innerText =  objectPet.parasites;
         body.classList.add('noscroll');
    })
 })
