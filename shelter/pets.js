@@ -123,22 +123,22 @@ function fullArr(len) {
     } 
     return result;
 }
+const firstArr= fullArr(8);
+console.log(firstArr);
+function mixFirstArr (arr) {
+    
+    let dublicatedArr = [...arr];
+    let partDublicatedArr = dublicatedArr.splice(0, 3);
+    partDublicatedArr = partDublicatedArr.sort(() => Math.random() - 0.5);
+    let partDublicatedArr2 = dublicatedArr.splice(0, 3);
+    partDublicatedArr2 = partDublicatedArr2.sort(() => Math.random() - 0.5);
+    dublicatedArr = dublicatedArr.sort(() => Math.random() - 0.5);
+    let result = [].concat(partDublicatedArr).concat( partDublicatedArr2).concat(dublicatedArr);
+    return result;
 
-/*console.log(resultArr);
-async function getArrPets() {  
-    const pets = `pets.json`;
-    const res = await fetch(pets);
-    const data = await res.json();
-    const arrPets = [];
-    while(arrPets.length <= 7) {
-        randomNumber = Math.floor(Math.random() * 8);
-        if (arrPets.indexOf(data[randomNumber]) === -1) {
-            arrPets.push(data[randomNumber]);
-        }
-    } 
-    return arrPets;
-}*/
-const commonArr = [].concat(fullArr(8)).concat(fullArr(8)).concat(fullArr(8)).concat(fullArr(8)).concat(fullArr(8)).concat(fullArr(8));
+}
+const commonArr = [].concat(firstArr).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr)).concat(mixFirstArr(firstArr));
+console.log(commonArr);
 function createSliderItem(name) {
     const sliderItem = document.createElement('li');
     sliderItem.classList.add('slider__item');
@@ -197,39 +197,90 @@ const btnEnd =  document.querySelector('#btn-end');
 };
 btnNext.addEventListener("click", moveTop);*/
 /**--------------pagination */
+let windWidth = window.innerWidth;
 let currentStep = 0;
 const updateBtn = () => {
-    if (currentStep === 5) {
-      btnEnd.disabled = true;
-      btnNext.disabled = true;
-    } else if (currentStep === 0) {
-      btnStart.disabled = true;
-      btnPrev.disabled = true;
-    } else {
-        btnEnd.disabled = false;
-        btnNext.disabled = false;
-        btnStart.disabled = false;
-        btnPrev.disabled = false;
+    if (windWidth >= 1280) {
+        if (currentStep === 5) {
+            btnEnd.disabled = true;
+            btnNext.disabled = true;
+          } else if (currentStep === 0) {
+            btnStart.disabled = true;
+            btnPrev.disabled = true;
+          } else {
+              btnEnd.disabled = false;
+              btnNext.disabled = false;
+              btnStart.disabled = false;
+              btnPrev.disabled = false;
+          }
+    } else if (windWidth < 1280 && windWidth > 767) {
+            if (currentStep === 7) {
+                btnEnd.disabled = true;
+                btnNext.disabled = true;
+              } else if (currentStep === 0) {
+                btnStart.disabled = true;
+                btnPrev.disabled = true;
+              } else {
+                  btnEnd.disabled = false;
+                  btnNext.disabled = false;
+                  btnStart.disabled = false;
+                  btnPrev.disabled = false;
+              }
+    } else if (windWidth < 768) {
+        if (currentStep === 15) {
+            btnEnd.disabled = true;
+            btnNext.disabled = true;
+          } else if (currentStep === 0) {
+            btnStart.disabled = true;
+            btnPrev.disabled = true;
+          } else {
+              btnEnd.disabled = false;
+              btnNext.disabled = false;
+              btnStart.disabled = false;
+              btnPrev.disabled = false;
+          }
     }
+    
 };
-btnNext.addEventListener("click", (e) => {
+btnNext.addEventListener("click", pressBtnNext);
+function pressBtnNext(e) {
+    if (windWidth >= 1280) {
     currentStep += 1;
     btnNum.innerText = currentStep + 1 ;
     console.log(currentStep);
     const sl = document.querySelector("#slider-list");
     sl.style.top = `-${currentStep*930}px`;
     updateBtn();
-});
+    } else if (windWidth < 1280) {
+        currentStep += 1;
+    btnNum.innerText = currentStep + 1 ;
+    console.log(currentStep);
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${currentStep*1392}px`;
+    updateBtn();
+    }
+};
 
-btnPrev.addEventListener("click", (e) => {
+btnPrev.addEventListener("click", pressBtnPrev);
+function pressBtnPrev(e) {
+    if (windWidth >= 1280) {
     currentStep += -1;
     console.log(currentStep);
     btnNum.innerText = currentStep + 1;
     const sl = document.querySelector("#slider-list");
     sl.style.top = `-${(currentStep)*930}px`;
     updateBtn();
-});
-btnStart.addEventListener("click", () => {
+    } else if (windWidth < 1280) {
+        currentStep += -1;
+    console.log(currentStep);
+    btnNum.innerText = currentStep + 1;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*1392}px`;
+    updateBtn();
+    }
+};
+btnStart.addEventListener("click", pressBtnStart)
+function pressBtnStart() {
     currentStep = 0;
     updateBtn(); 
     btnNum.innerText = currentStep + 1;
@@ -237,9 +288,11 @@ btnStart.addEventListener("click", () => {
     btnNext.disabled = false;
     const sl = document.querySelector("#slider-list");
     sl.style.top = `0`;
-  });
+};
   
-btnEnd.addEventListener("click", () => {
+btnEnd.addEventListener("click", pressBtnEnd);
+function pressBtnEnd() {
+    if (windWidth >= 1280) {
     currentStep = 5;
     updateBtn();
     btnNum.innerText = currentStep + 1;
@@ -247,7 +300,29 @@ btnEnd.addEventListener("click", () => {
     btnPrev.disabled = false;
     const sl = document.querySelector("#slider-list");
     sl.style.top = `-${(currentStep)*930}px`;
-});
+    } else if (windWidth < 1280 && windWidth > 767) {
+        currentStep = 7;
+    updateBtn();
+    btnNum.innerText = currentStep + 1;
+    btnStart.disabled = false;
+    btnPrev.disabled = false;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*1392}px`;
+    } else if (windWidth < 768) {
+        currentStep = 15;
+    updateBtn();
+    btnNum.innerText = currentStep + 1;
+    btnStart.disabled = false;
+    btnPrev.disabled = false;
+    const sl = document.querySelector("#slider-list");
+    sl.style.top = `-${(currentStep)*1392}px`;
+    }
+};
+window.addEventListener('resize', function() {
+    windWidth = window.innerWidth;
+    pressBtnStart();
+
+})
    /*----------popup-cards------*/
 const arrSliderItems = document.querySelectorAll('.slider__item');
 const popupCard = document.querySelector('.popup-wrapper');

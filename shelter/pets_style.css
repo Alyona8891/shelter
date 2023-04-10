@@ -390,7 +390,7 @@ body.noscroll {
 }
 @media screen and (max-width: 1279px) {
     .slider {
-        max-width: 80.7291667vw;
+        max-width: 600px;
         max-height: 1415px;
     }
 }
