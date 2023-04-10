@@ -773,3 +773,115 @@ body.noscroll {
     width: 100%;
     object-fit: contain;
 }
+/*--------popup-card----*/
+.popup-wrapper {
+    display: none;
+    transition: 1s;
+}
+.popup-wrapper__active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 122;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 1s;
+}
+.popup__window {
+    position: relative;
+    width: 900px;
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+    background-color: #FAFAFA;
+    border-radius: 9px;
+    padding-right: 20px;
+}
+.popup__btn-close {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #F1CDB3;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(41, 41, 41, 0.1);
+    position: absolute;
+    transform: rotate(45deg);
+    font-size: 30px;
+    top: -52px;
+    right: -40px;
+    transition: 0.3s;
+    z-index: 200;
+}
+.popup__window:hover::after  {
+    border: 2px solid #FDDCC4;
+    background-color: #FDDCC4;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+.popup__window img {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    border-radius: 9px 0 0 9px;
+}
+.popup__text-block {
+    padding-top: 50px;
+    max-width: 351px;
+}
+.popup__title {
+    color: #000000;
+    margin-bottom: 10px;
+}
+.popup__subtitle {
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #000000;
+    margin-bottom: 42px;
+}
+.popup__text {
+    font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 110%;
+letter-spacing: 0.06em;
+color: #000000;
+margin-bottom: 42px;
+}
+.popup__item {
+    padding-left: 12px ;
+    display: flex;
+    position: relative;
+    margin-bottom: 11px;
+}
+.popup__item::before {
+    position: absolute;
+    content: '';
+    background: #F1CDB3;
+    top: 5px;
+    left: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+.item__title {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;
+}
+.item__text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16.5px;
+    letter-spacing: 0.06em;;
+}

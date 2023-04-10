@@ -170,9 +170,9 @@ function createSlider() {
 }
 const slider = document.querySelector('#slider');
 
-window.addEventListener('load', (e) => {
-    slider.appendChild(createSlider());
-})
+
+slider.appendChild(createSlider());
+
 const moveLeft = () => {
     carousel.classList.add("transition-left");
     btnLeft.removeEventListener("click", moveLeft);
@@ -214,12 +214,11 @@ const updateBtn = () => {
 };
 btnNext.addEventListener("click", (e) => {
     currentStep += 1;
-    /*btnNum.insertAdjacentText.classList.toggle("active", numIndex === currentStep);*/
     btnNum.innerText = currentStep + 1 ;
     console.log(currentStep);
     const sl = document.querySelector("#slider-list");
     sl.style.top = `-${currentStep*930}px`;
-    updateBtn(); // Update the button states
+    updateBtn();
 });
 
 btnPrev.addEventListener("click", (e) => {
@@ -228,7 +227,7 @@ btnPrev.addEventListener("click", (e) => {
     btnNum.innerText = currentStep + 1;
     const sl = document.querySelector("#slider-list");
     sl.style.top = `-${(currentStep)*930}px`;
-    updateBtn(); // Update the button states
+    updateBtn();
 });
 btnStart.addEventListener("click", () => {
     currentStep = 0;
@@ -240,15 +239,51 @@ btnStart.addEventListener("click", () => {
     sl.style.top = `0`;
   });
   
-  // Add event listener to the "End" button
 btnEnd.addEventListener("click", () => {
-    
     currentStep = 5;
-    updateBtn(); // Update the button states
+    updateBtn();
     btnNum.innerText = currentStep + 1;
     btnStart.disabled = false;
     btnPrev.disabled = false;
     const sl = document.querySelector("#slider-list");
     sl.style.top = `-${(currentStep)*930}px`;
-  });
-   
+});
+   /*----------popup-cards------*/
+const arrSliderItems = document.querySelectorAll('.slider__item');
+const popupCard = document.querySelector('.popup-wrapper');
+const popupWindow = document.querySelector('.popup__window', '::before');
+
+const popupImage = document.querySelector('.popup__image');
+const popupTitle = document.querySelector('.popup__title');
+const popupSubtitle = document.querySelector('.popup__subtitle');
+const popupText = document.querySelector('.popup__text');
+const listItem = document.querySelectorAll('.item__text');
+const popupCloseBtn = document.querySelector('.popup__btn-close');
+
+
+   arrSliderItems.forEach((item, index) => {
+    item.addEventListener("click", (e) => {
+        let objectPet = pets[commonArr[index]];
+        popupCard.classList.add('popup-wrapper__active');
+        popupImage.src = `./assets/modal/${objectPet.name}.png`;
+        popupTitle.innerText = objectPet.name;
+        popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
+        popupText.innerText = objectPet.description;
+        listItem[0].innerText =  objectPet.age;
+        listItem[1].innerText =  objectPet.inoculations;
+        listItem[2].innerText =  objectPet.diseases;
+        listItem[3].innerText =  objectPet.parasites;
+        body.classList.add('noscroll');
+   })
+})
+function closePopup(e) {
+    if(e.target.classList.contains('popup-wrapper')) {
+        popupCard.classList.remove('popup-wrapper__active');
+        body.classList.remove('noscroll');
+    }
+}
+popupCard.addEventListener("click", closePopup);
+popupCloseBtn.addEventListener("click", (e) => {
+    popupCard.classList.remove('popup-wrapper__active');
+    body.classList.remove('noscroll');
+});
