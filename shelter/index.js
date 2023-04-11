@@ -224,7 +224,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
         let arrSliderItems = document.querySelectorAll('.slider__item');
         arrSliderItems.forEach((item, index) => {
             item.addEventListener("click", (e) => {
-                let objectPet = pets[activeArr[index]];
+                let objectPet = pets[activeArr[index-3]];
                 popupCard.classList.add('popup-wrapper__active');
                 popupImage.src = `./assets/modal/${objectPet.name}.png`;
                 popupTitle.innerText = objectPet.name;
@@ -250,7 +250,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
         let arrSliderItems = document.querySelectorAll('.slider__item');
         arrSliderItems.forEach((item, index) => {
             item.addEventListener("click", (e) => {
-                let objectPet = pets[activeArr[index]]
+                let objectPet = pets[activeArr[index-3]]
                 popupCard.classList.add('popup-wrapper__active');
                 popupImage.src = `./assets/modal/${objectPet.name}.png`;
                 popupTitle.innerText = objectPet.name;
@@ -361,7 +361,7 @@ const popupCloseBtn = document.querySelector('.popup__btn-close');
 
    arrSliderItems.forEach((item, index) => {
     item.addEventListener("click", (e) => {
-        let objectPet = pets[activeArr[index]];
+        let objectPet = pets[activeArr[index-3]];
         popupCard.classList.add('popup-wrapper__active');
         popupImage.src = `./assets/modal/${objectPet.name}.png`;
         popupTitle.innerText = objectPet.name;
