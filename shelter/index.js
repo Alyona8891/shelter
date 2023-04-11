@@ -1,4 +1,3 @@
-alert('Родненький(ая)! Дай сутки доделать этот гребаный слайдер!');
 const hamb = document.querySelector('#hamb');
 const popup = document.querySelector('#popup');
 const menu = document.querySelector('#menu').cloneNode(1);
