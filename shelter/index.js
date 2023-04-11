@@ -307,6 +307,7 @@ popupCloseBtn.addEventListener("click", (e) => {
     body.classList.remove('noscroll');
 });
 window.addEventListener('resize', function() {
+
     windWidth = window.innerWidth;
     if(windWidth >= 1280) {
         acountCards = 3;
@@ -315,8 +316,29 @@ window.addEventListener('resize', function() {
     } else if (windWidth < 768){
         acountCards = 1;
     }
-    prevArr = [];
-    activeArr = [];
-    nextArr = [];
-    initArr();
+    
+    carousel.classList.remove("transition-left");
+        nextSlide.innerHTML = activeSlide.innerHTML;
+        activeSlide.innerHTML = prevSlide.innerHTML;
+        prevSlide.innerHTML = '';
+        nextArr = activeArr.splice(0, acountCards);
+        activeArr = prevArr.splice(0, acountCards);
+        prevArr = getArrRandomNumber(activeArr);
+        prevSlide.innerHTML = createCarouselItem(prevArr, acountCards).innerHTML;
+        let arrSliderItems = document.querySelectorAll('.slider__item');
+        arrSliderItems.forEach((item, index) => {
+            item.addEventListener("click", (e) => {
+                let objectPet = pets[activeArr[index-acountCards]];
+                popupCard.classList.add('popup-wrapper__active');
+                popupImage.src = `./assets/modal/${objectPet.name.toLowerCase()}.png`;
+                popupTitle.innerText = objectPet.name;
+                popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
+                popupText.innerText = objectPet.description;
+                listItem[0].innerText =  objectPet.age;
+                listItem[1].innerText =  objectPet.inoculations;
+                listItem[2].innerText =  objectPet.diseases;
+                listItem[3].innerText =  objectPet.parasites;
+                body.classList.add('noscroll');
+           })
+        })
 })
