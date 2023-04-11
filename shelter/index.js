@@ -226,7 +226,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
             item.addEventListener("click", (e) => {
                 let objectPet = pets[activeArr[index-3]];
                 popupCard.classList.add('popup-wrapper__active');
-                popupImage.src = `../assets/modal/${objectPet.name}.png`;
+                popupImage.src = `./assets/modal/${objectPet.name.toLocaleUpperCase()}.png`;
                 popupTitle.innerText = objectPet.name;
                 popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
                 popupText.innerText = objectPet.description;
@@ -252,7 +252,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
             item.addEventListener("click", (e) => {
                 let objectPet = pets[activeArr[index-3]]
                 popupCard.classList.add('popup-wrapper__active');
-                popupImage.src = `../assets/modal/${objectPet.name}.png`;
+                popupImage.src = `./assets/modal/${objectPet.name.toLocaleUpperCase()}.png`;
                 popupTitle.innerText = objectPet.name;
                 popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
                 popupText.innerText = objectPet.description;
@@ -363,7 +363,7 @@ const popupCloseBtn = document.querySelector('.popup__btn-close');
     item.addEventListener("click", (e) => {
         let objectPet = pets[activeArr[index-3]];
         popupCard.classList.add('popup-wrapper__active');
-        popupImage.src = `../assets/modal/${objectPet.name}.png`;
+        popupImage.src = `./assets/modal/${objectPet.name.toLocaleUpperCase()}.png`;
         popupTitle.innerText = objectPet.name;
         popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
         popupText.innerText = objectPet.description;
