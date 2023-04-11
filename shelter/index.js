@@ -123,6 +123,8 @@ let nextArr = [];
 let acountCards = 0;
 if(windWidth >= 1280) {
     acountCards = 3;
+} else if (windWidth < 1280) {
+    acountCards = 2;
 }
 function getArrRandomNumber(arr) {
     let newArrNumber = [];
@@ -176,21 +178,24 @@ function createSliderItem(name) {
     sliderImageBlock.appendChild(sliderImage);
     return sliderItem;
 }
-function createCarouselItem(arr) {
+function createCarouselItem(arr, num) {
     const carouselItem = document.createElement('ul');
     carouselItem.classList.add('slider__list');
+    for(let i=0; i<num; i++) {
+        carouselItem.appendChild(createSliderItem(pets[arr[i]].name));
+    }/*
     carouselItem.appendChild(createSliderItem(pets[arr[0]].name));
     carouselItem.appendChild(createSliderItem(pets[arr[1]].name));
-    carouselItem.appendChild(createSliderItem(pets[arr[2]].name));
+    carouselItem.appendChild(createSliderItem(pets[arr[2]].name));*/
     return carouselItem;
 }
-let prevSlide = createCarouselItem(prevArr);
+let prevSlide = createCarouselItem(prevArr, acountCards);
 prevSlide.id = 'item-left';
 carousel.appendChild(prevSlide);
-let activeSlide = createCarouselItem(activeArr);
+let activeSlide = createCarouselItem(activeArr, acountCards);
 activeSlide.id = 'carousel-item-active';
 carousel.appendChild(activeSlide);
-let nextSlide = createCarouselItem(nextArr);
+let nextSlide = createCarouselItem(nextArr, acountCards);
 nextSlide.id = 'item-right'
 carousel.appendChild(nextSlide);
 
@@ -212,11 +217,26 @@ carousel.addEventListener("animationend", (animationEvent) => {
         nextSlide.innerHTML = activeSlide.innerHTML;
         activeSlide.innerHTML = prevSlide.innerHTML;
         prevSlide.innerHTML = '';
-        
         nextArr = activeArr.splice(0, acountCards);
         activeArr = prevArr.splice(0, acountCards);
         prevArr = getArrRandomNumber(activeArr);
-        prevSlide.innerHTML = createCarouselItem(prevArr).innerHTML;
+        prevSlide.innerHTML = createCarouselItem(prevArr, acountCards).innerHTML;
+        let arrSliderItems = document.querySelectorAll('.slider__item');
+        arrSliderItems.forEach((item, index) => {
+            item.addEventListener("click", (e) => {
+                let objectPet = pets[activeArr[index]];
+                popupCard.classList.add('popup-wrapper__active');
+                popupImage.src = `./assets/modal/${objectPet.name}.png`;
+                popupTitle.innerText = objectPet.name;
+                popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
+                popupText.innerText = objectPet.description;
+                listItem[0].innerText =  objectPet.age;
+                listItem[1].innerText =  objectPet.inoculations;
+                listItem[2].innerText =  objectPet.diseases;
+                listItem[3].innerText =  objectPet.parasites;
+                body.classList.add('noscroll');
+           })
+        })
         
     } else {
         carousel.classList.remove("transition-right");
@@ -226,7 +246,23 @@ carousel.addEventListener("animationend", (animationEvent) => {
         prevArr = activeArr.splice(0, acountCards);
         activeArr = nextArr.splice(0, acountCards);
         nextArr = getArrRandomNumber(activeArr);
-        nextSlide.innerHTML = createCarouselItem(nextArr).innerHTML;
+        nextSlide.innerHTML = createCarouselItem(nextArr, acountCards).innerHTML;
+        let arrSliderItems = document.querySelectorAll('.slider__item');
+        arrSliderItems.forEach((item, index) => {
+            item.addEventListener("click", (e) => {
+                let objectPet = pets[activeArr[index]]
+                popupCard.classList.add('popup-wrapper__active');
+                popupImage.src = `./assets/modal/${objectPet.name}.png`;
+                popupTitle.innerText = objectPet.name;
+                popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
+                popupText.innerText = objectPet.description;
+                listItem[0].innerText =  objectPet.age;
+                listItem[1].innerText =  objectPet.inoculations;
+                listItem[2].innerText =  objectPet.diseases;
+                listItem[3].innerText =  objectPet.parasites;
+                body.classList.add('noscroll');
+           })
+        })
     }
     
     /*btnLeft.addEventListener("click", moveRight);
@@ -310,8 +346,8 @@ carousel.addEventListener("animationend", (animationEvent) => {
     btnRight.addEventListener("click", moveRight);
 })
 /*----------popup-cards------*/
+let arrSliderItems = document.querySelectorAll('.slider__item');
 
-const arrSliderItems = document.querySelectorAll('.slider__item');
 const popupCard = document.querySelector('.popup-wrapper');
 const popupWindow = document.querySelector('.popup__window');
 
@@ -325,16 +361,16 @@ const popupCloseBtn = document.querySelector('.popup__btn-close');
 
    arrSliderItems.forEach((item, index) => {
     item.addEventListener("click", (e) => {
-        /*let objectPet = pets[commonArr[index]];*/
+        let objectPet = pets[activeArr[index]];
         popupCard.classList.add('popup-wrapper__active');
-        /*popupImage.src = `./assets/modal/${objectPet.name}.png`;
+        popupImage.src = `./assets/modal/${objectPet.name}.png`;
         popupTitle.innerText = objectPet.name;
         popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
         popupText.innerText = objectPet.description;
         listItem[0].innerText =  objectPet.age;
         listItem[1].innerText =  objectPet.inoculations;
         listItem[2].innerText =  objectPet.diseases;
-        listItem[3].innerText =  objectPet.parasites;*/
+        listItem[3].innerText =  objectPet.parasites;
         body.classList.add('noscroll');
    })
 })
