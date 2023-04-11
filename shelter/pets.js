@@ -340,7 +340,7 @@ const popupCloseBtn = document.querySelector('.popup__btn-close');
     item.addEventListener("click", (e) => {
         let objectPet = pets[commonArr[index]];
         popupCard.classList.add('popup-wrapper__active');
-        popupImage.src = `./assets/modal/${objectPet.name.toLocaleUpperCase()}.png`;
+        popupImage.src = `./assets/modal/${objectPet.name.toLocaleLowerCase()}.png`;
         popupTitle.innerText = objectPet.name;
         popupSubtitle.innerText = objectPet.type + ' - ' +  objectPet.breed ;
         popupText.innerText = objectPet.description;
