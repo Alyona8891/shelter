@@ -123,8 +123,10 @@ let nextArr = [];
 let acountCards = 0;
 if(windWidth >= 1280) {
     acountCards = 3;
-} else if (windWidth < 1280) {
+} else if (windWidth < 1280 && windWidth >= 768) {
     acountCards = 2;
+} else if (windWidth < 768){
+    acountCards = 1;
 }
 function getArrRandomNumber(arr) {
     let newArrNumber = [];
@@ -152,11 +154,7 @@ function initArr() {
     activeArr = nextArr.splice(0, acountCards);
     nextArr = getArrRandomNumber(activeArr);
 }
-initArr()
-console.log(acountCards);
-console.log(nextArr);
-console.log(activeArr);
-console.log(prevArr);
+initArr();
 
 function createSliderItem(name) {
     const sliderItem = document.createElement('li');
@@ -224,7 +222,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
         let arrSliderItems = document.querySelectorAll('.slider__item');
         arrSliderItems.forEach((item, index) => {
             item.addEventListener("click", (e) => {
-                let objectPet = pets[activeArr[index-3]];
+                let objectPet = pets[activeArr[index-acountCards]];
                 popupCard.classList.add('popup-wrapper__active');
                 popupImage.src = `./assets/modal/${objectPet.name.toLowerCase()}.png`;
                 popupTitle.innerText = objectPet.name;
@@ -250,7 +248,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
         let arrSliderItems = document.querySelectorAll('.slider__item');
         arrSliderItems.forEach((item, index) => {
             item.addEventListener("click", (e) => {
-                let objectPet = pets[activeArr[index-3]]
+                let objectPet = pets[activeArr[index-acountCards]]
                 popupCard.classList.add('popup-wrapper__active');
                 popupImage.src = `./assets/modal/${objectPet.name.toLowerCase()}.png`;
                 popupTitle.innerText = objectPet.name;
@@ -268,83 +266,7 @@ carousel.addEventListener("animationend", (animationEvent) => {
     /*btnLeft.addEventListener("click", moveRight);
     btnRight.addEventListener("click", moveLeft);*/
 })
-/*
-let arrActive = [];
-let arrLeft = [];
-let arrRight = [];
-    const arrRandomActive = getArrRandomNumber();
-    arrRandomActive.forEach(element => {
-        arrActive.push(element);
-    });
-    const carouselItemActive = document.createElement('ul');
-    carouselItemActive.classList.add('slider__list');
-    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[0]]));
-    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[1]]));
-    carouselItemActive.appendChild(createSliderItem(arrPetsNames[arrRandomActive[2]]));
-    carouselItemActive.id = 'carousel-item-active';
-    carousel.appendChild(carouselItemActive);
-    const arrRandomLeft = getArrRandomNumber(arrRandomActive);
-    arrRandomLeft.forEach(element => {
-        arrLeft.push(element);
-    });
-    const  carouselItemLeft = createCarouselItem(arrRandomLeft);
-    carouselItemLeft.id = 'item-left';
-    carouselItemActive.before(carouselItemLeft);
-    const arrRandomRight = getArrRandomNumber(arrRandomActive);
-    arrRandomRight.forEach(element => {
-        arrRight.push(element);
-    });
-    const  carouselItemRight = createCarouselItem(arrRandomRight);
-    carouselItemRight.id = 'item-right';
-    carouselItemActive.after(carouselItemRight);
 
-
-
-
-const moveLeft = () => {
-    carousel.classList.add("transition-left");
-    btnLeft.removeEventListener("click", moveLeft);
-    btnRight.removeEventListener("click", moveRight);
-};
-const moveRight = () => {
-    carousel.classList.add("transition-right");
-    btnLeft.removeEventListener("click", moveLeft);
-    btnRight.removeEventListener("click", moveRight);
-  };
-btnLeft.addEventListener("click", moveLeft);
-btnRight.addEventListener("click", moveRight);
-carousel.addEventListener("animationend", (animationEvent) => {
-    if (animationEvent.animationName === "move-left") {
-        carousel.classList.remove("transition-left");
-        document.querySelector("#carousel-item-active").innerHTML = document.querySelector("#item-left").innerHTML;
-        document.querySelector("#item-left").innerHTML='';
-        arrRight = arrActive;
-        arrActive = arrLeft;
-        console.log(arrActive);
-        const arrRandom = getArrRandomNumber(arrActive);
-        arrLeft = arrRandom;
-        console.log(arrLeft);
-        let  changedItemLeft = createCarouselItem(arrLeft);
-        changedItemLeft.id = 'item-left';
-        document.querySelector("#item-left").innerHTML = changedItemLeft.innerHTML;
-    } else {
-        carousel.classList.remove("transition-right");
-        document.querySelector("#carousel-item-active").innerHTML = document.querySelector("#item-right").innerHTML;
-        document.querySelector("#item-right").innerHTML='';
-        arrLeft = arrActive;
-        arrActive = arrRight;
-        console.log(arrActive);
-        const arrRandomCh = getArrRandomNumber(arrActive);
-        arrRight = arrRandomCh;
-        console.log(arrRight);
-        let  changedItemRight = createCarouselItem(arrRight);
-        changedItemRight.id = 'item-right';
-        document.querySelector("#item-right").innerHTML = changedItemRight.innerHTML;
-    }
-    
-    btnLeft.addEventListener("click", moveLeft);
-    btnRight.addEventListener("click", moveRight);
-})
 /*----------popup-cards------*/
 let arrSliderItems = document.querySelectorAll('.slider__item');
 
@@ -361,7 +283,7 @@ const popupCloseBtn = document.querySelector('.popup__btn-close');
 
    arrSliderItems.forEach((item, index) => {
     item.addEventListener("click", (e) => {
-        let objectPet = pets[activeArr[index-3]];
+        let objectPet = pets[activeArr[index-acountCards]];
         popupCard.classList.add('popup-wrapper__active');
         popupImage.src = `./assets/modal/${objectPet.name.toLowerCase()}.png`;
         popupTitle.innerText = objectPet.name;
@@ -385,3 +307,17 @@ popupCloseBtn.addEventListener("click", (e) => {
     popupCard.classList.remove('popup-wrapper__active');
     body.classList.remove('noscroll');
 });
+window.addEventListener('resize', function() {
+    windWidth = window.innerWidth;
+    if(windWidth >= 1280) {
+        acountCards = 3;
+    } else if (windWidth < 1280 && windWidth >= 768) {
+        acountCards = 2;
+    } else if (windWidth < 768){
+        acountCards = 1;
+    }
+    prevArr = [];
+    activeArr = [];
+    nextArr = [];
+    initArr();
+})
