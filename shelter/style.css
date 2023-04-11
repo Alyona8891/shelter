@@ -1328,6 +1328,20 @@ main {
     border-radius: 9px;
     padding-right: 20px;
 }
+@media screen and (max-width: 1050px) {
+    .popup__window {
+       width: 630px;
+       height: 350px;
+    }
+}
+@media screen and (max-width: 755px) {
+    .popup__window {
+       width: 240px;
+       height: 360px;
+       padding-right: 0px;
+       justify-content: center;
+    }
+}
 .popup__btn-close {
     width: 50px;
     height: 50px;
@@ -1358,13 +1372,46 @@ main {
     height: 500px;
     border-radius: 9px 0 0 9px;
 }
+@media screen and (max-width: 1050px) {
+    .popup__window img {
+        width: 350px;
+        height: 350px;
+    }
+}
+@media screen and (max-width: 755px) {
+    .popup__window img {
+        display: none;
+    }
+}
 .popup__text-block {
     padding-top: 50px;
     max-width: 351px;
 }
+@media screen and (max-width: 1050px) {
+    .popup__text-block {
+        padding-top: 10px;
+    }
+}
+@media screen and (max-width: 755px) {
+    .popup__text-block {
+    padding-top: 0px;
+       display: flex;
+       justify-content: flex-start;
+       flex-direction: column;
+       align-items: center;
+       max-width: 220px;
+       text-align: center;
+    }
+}
+
 .popup__title {
     color: #000000;
     margin-bottom: 10px;
+}
+@media screen and (max-width: 755px) {
+    .popup__title {
+        margin-bottom: 0px;
+    }
 }
 .popup__subtitle {
     font-size: 20px;
@@ -1372,6 +1419,16 @@ main {
     letter-spacing: 0.06em;
     color: #000000;
     margin-bottom: 42px;
+}
+@media screen and (max-width: 1050px) {
+    .popup__subtitle {
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 755px) {
+    .popup__subtitle {
+        margin-bottom: 10px;
+    }
 }
 .popup__text {
     font-style: normal;
@@ -1382,11 +1439,28 @@ letter-spacing: 0.06em;
 color: #000000;
 margin-bottom: 42px;
 }
+@media screen and (max-width: 1050px) {
+    .popup__text {
+     font-size: 13px;
+     margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 755px) {
+    .popup__text {
+     margin-bottom: 10px;
+    }
+}
 .popup__item {
     padding-left: 12px ;
     display: flex;
     position: relative;
     margin-bottom: 11px;
+}
+@media screen and (max-width: 1050px) {
+    .popup__item {
+     margin-bottom: 5px;
+     flex-wrap: wrap;
+    }
 }
 .popup__item::before {
     position: absolute;
