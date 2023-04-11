@@ -605,7 +605,7 @@ main {
     justify-content: space-between;
     align-items: center;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
     .choise-block {
         flex-wrap: wrap;
         max-width: 310px;
@@ -634,7 +634,7 @@ main {
         transition: 0.3s;
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
     .choise-block__arrow-block {
         order: 2;
         transform: none;
@@ -645,8 +645,22 @@ main {
 }
 #carousel {
     display: flex;
-    left: -1086px;
+    left: -1106px;
     position: relative;
+}
+@media screen and (max-width: 1279px) {
+    #carousel {
+        display: flex;
+        left: -630px;
+        position: relative;
+    }
+}
+@media screen and (max-width: 767px) {
+    #carousel {
+        display: flex;
+        left: -305px;
+        position: relative;
+    }
 }
 .choise-block__slider-block {
     margin: 0 5px;
@@ -657,7 +671,7 @@ main {
 }
 @media screen and (max-width: 1279px) {
     .slider {
-        max-width: 604px;
+        max-width: 584px;
         overflow: hidden;
     }
 }
@@ -769,8 +783,8 @@ main {
     }
 }
 @keyframes move-right {
-    from {left: -1086px;}
-    to {left: -2172px;}
+    from {left: -1106px;}
+    to {left: -2205px;}
   }
   
   .transition-right {
@@ -779,15 +793,57 @@ main {
   }
   
   @keyframes move-left {
-    from {left: -1086px;}
-    to {left: 0px;}
+    from {left: -1106px;}
+    to {left: -5px;}
   }
   
   .transition-left {
     animation-name: move-left;
     animation-duration: 5s;
   }
-/*------------help------------------------*/
+@media screen and (max-width: 1279px) {
+    @keyframes move-right {
+    from {left: -630px;}
+    to {left: -1250px;}
+  }
+  
+  .transition-right {
+    animation-name: move-right;
+    animation-duration: 5s;
+  }
+  
+  @keyframes move-left {
+    from {left: -630px;}
+    to {left: -10px;}
+  }
+  
+  .transition-left {
+    animation-name: move-left;
+    animation-duration: 5s;
+  }
+  }
+  @media screen and (max-width: 767px) {
+    @keyframes move-right {
+    from {left: -310px;}
+    to {left: -605px;}
+  }
+  
+  .transition-right {
+    animation-name: move-right;
+    animation-duration: 5s;
+  }
+  
+  @keyframes move-left {
+    from {left: -310px;}
+    to {left: -5px;}
+  }
+  
+  .transition-left {
+    animation-name: move-left;
+    animation-duration: 5s;
+  }
+  }
+/*-----------help------------------------*/
 .help {
     padding-top: 81px;
 }
