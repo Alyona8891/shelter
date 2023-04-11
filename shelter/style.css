@@ -234,7 +234,9 @@ body.noscroll {
         box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
     }
     .header__popup .header__list {
-        padding-top: 252px;
+        /*padding-top: 252px;*/
+        position: absolute;
+        top: 33%;
         flex-direction: column;
         height: 100%;
         align-items: center;
