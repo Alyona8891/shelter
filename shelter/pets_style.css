@@ -836,6 +836,9 @@ body.noscroll {
     transition: 0.3s;
     z-index: 200;
 }
+.popup__btn-close:hover {
+    background-color: #F1CDB3;
+}
 .popup__window:hover::after  {
     border: 2px solid #FDDCC4;
     background-color: #FDDCC4;
