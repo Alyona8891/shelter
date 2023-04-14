@@ -684,7 +684,7 @@ main {
     }
 }
 .slider__list {
-    width: 9999999px;
+    /*width: 9999999px;*/
     display: flex;
     justify-content: flex-start;
     padding: 0 10px;

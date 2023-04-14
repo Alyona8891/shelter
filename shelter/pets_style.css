@@ -404,7 +404,6 @@ body.noscroll {
 }
 .slider__list {
     position: relative;
-    width: 9999999px;
     display: flex;
     width: 100%;
     justify-content: space-around;
