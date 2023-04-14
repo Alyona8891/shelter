@@ -198,16 +198,16 @@ carousel.appendChild(nextSlide);
 
 const moveLeft = () => {
     carousel.classList.add("transition-left");
-    btnLeft.removeEventListener("click", moveLeft);
-    btnRight.removeEventListener("click", moveRight);
+    btnLeft.removeEventListener("click", moveRight);
+    btnRight.removeEventListener("click", moveLeft);
 };
 const moveRight = () => {
     carousel.classList.add("transition-right");
-    btnLeft.removeEventListener("click", moveLeft);
-    btnRight.removeEventListener("click", moveRight);
+    btnLeft.removeEventListener("click", moveRight);
+    btnRight.removeEventListener("click", moveLeft);
   };
-btnLeft.addEventListener("click", moveRight);
-btnRight.addEventListener("click", moveLeft);
+btnLeft.addEventListener("click", moveLeft);
+btnRight.addEventListener("click", moveRight);
 carousel.addEventListener("animationend", (animationEvent) => {
     if (animationEvent.animationName === "move-left") {
         carousel.classList.remove("transition-left");
